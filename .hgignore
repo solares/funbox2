@@ -1,0 +1,11 @@
+syntax: glob
+
+apps/**
+assets/**
+builds/**
+
+.DS_Store
+*.orig
+*.pyc
+
+
