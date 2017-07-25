@@ -4,6 +4,7 @@ from subprocess import call
 
 def bash(*args):
     cmd = " ".join(args)
+    # print ("bash %s"%cmd)
     call(cmd, shell=True)
 
 def ensureFolder(*folders):

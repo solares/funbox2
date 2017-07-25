@@ -147,7 +147,6 @@ if __name__ == '__main__':
         if argcount <= 2:
             print error + " Missing product for build."
             usage()
-        # product = sys.argv[2]
         buildTools.build(sys.argv[2:])
 
     elif command == "publish":

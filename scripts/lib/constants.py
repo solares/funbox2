@@ -27,8 +27,10 @@ buildRepos = [
 
 ]
 
+displacementFolder = "__displaced__"
+
 # icon="\xF0\x9F\x8E\x93 " 
 icon =""
 tick = "\xE2\x9C\x85"
-error="\xE2\x9B\x94 "
+error="\xE2\x9B\x94"
 warn="\xE2\x9C\x8B"
