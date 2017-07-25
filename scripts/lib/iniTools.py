@@ -13,12 +13,11 @@ def read(inifile):
 
 def setupFolders():
     for folder in requiredFolders:
-        if not os.path.exists(folder):
-            bash("mkdir", folder)
+    	ensureFolder(cwd, folder)
 
 def addFolderToPath(cwd):
 	bash("export PATH=$PATH:%s"%cwd)
 
 def setup(cwd):
-	setupFolders()
+	setupFolders(cwd)
 	addFolderToPath(cwd)

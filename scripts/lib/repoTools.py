@@ -59,10 +59,10 @@ def updateRepo(repo, protocol="ssh"):
     	name = repo["name"]
     	ver = repo["ver"]
     	# enter the folder and clone the repo
-    	print "%s Cloning %s and updating..."%(tick, name)
         url = "ssh://hg@bitbucket.org/solares/%s"%name
         if protocol == "https":
             url = "https://bitbucket.org/solares/%s"%name
+        print "%s %s"%(tick, url)
     	bash(ver, "clone", url, path)
         if ver=="hg":
             bash("hg -R", path, "update", branch)
