@@ -47,7 +47,7 @@ def updateRepo(repo, protocol="ssh"):
     branch = repo["branch"]
 
     if ver:
-    	print "%s  Found repo %s"%(tick, path)
+    	print "%s  Found %s repo at %s"%(tick, ver, path)
         if ver == "hg":
         	bash("hg -R", path, "pull")
         	bash("hg -R", path, "update", branch)
@@ -62,7 +62,7 @@ def updateRepo(repo, protocol="ssh"):
         url = "ssh://hg@bitbucket.org/solares/%s"%name
         if protocol == "https":
             url = "https://bitbucket.org/solares/%s"%name
-        print "%s %s"%(tick, url)
+        print "%s  %s"%(tick, url)
     	bash(ver, "clone", url, path)
         if ver=="hg":
             bash("hg -R", path, "update", branch)

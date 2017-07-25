@@ -73,9 +73,9 @@ def link(version):
 
  
     # art
-    versionFolder = "24bit"
+    versionFolder = "master"
     if version != "master":
-        versionFolder = os.path.join("8bit", version)
+        versionFolder = os.path.join("builds", version)
     artLink = os.path.join(assets_path, "art-funenglish", versionFolder)
     artLocation = os.path.join(app_path, "art")
     displace("art", artLink, artLocation)
