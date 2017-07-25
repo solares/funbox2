@@ -16,10 +16,9 @@ def setupFolders():
         if not os.path.exists(folder):
             bash("mkdir", folder)
 
-def addFolderToPath():
-	bash("export PATH=$PATH:$PWD")
+def addFolderToPath(cwd):
+	bash("export PATH=$PATH:%s"%cwd)
 
-
-def setup():
+def setup(cwd):
 	setupFolders()
-	addFolderToPath()
+	addFolderToPath(cwd)
