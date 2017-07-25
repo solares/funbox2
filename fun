@@ -4,8 +4,10 @@ import scripts.lib.repoTools as repoTools
 import scripts.lib.assetTools as assetTools
 import scripts.lib.skinTools as skinTools
 import scripts.lib.buildTools as buildTools
-import scripts.lib.iniTools as iniTools
+import scripts.lib.iniTools as iniTools 
 from scripts.lib.constants import icon, tick, error
+
+iniTools.setup()
 
 # SET UP 
 # export PATH=$PATH:$PWD

@@ -3,7 +3,6 @@ import os
 from helpers import ensureFolder, ensureVersionFolder, bash
 from constants import appRepos, assetRepos, buildRepos, tick
 
-
 def build(args):
     cmd = " ".join(args)
     print "Building with './build.py %s'"%cmd

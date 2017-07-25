@@ -29,6 +29,12 @@ buildRepos = [
 
 displacementFolder = "__displaced__"
 
+requiredFolders = [
+    "apps",
+    "assets",
+    "builds"
+]
+
 # icon="\xF0\x9F\x8E\x93 " 
 icon =""
 tick = "\xE2\x9C\x85"
