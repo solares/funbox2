@@ -1,7 +1,7 @@
 import os
 import ConfigParser
 from constants import requiredFolders
-from helpers import bash
+from helpers import ensureFolder, bash
 
 def read(inifile):
 	config = ConfigParser.RawConfigParser(allow_no_value=True)
