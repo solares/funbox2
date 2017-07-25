@@ -11,7 +11,7 @@ def read(inifile):
 		print (section)
 	return config
 
-def setupFolders():
+def setupFolders(cwd):
     for folder in requiredFolders:
     	ensureFolder(cwd, folder)
 
