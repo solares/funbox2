@@ -1,13 +1,8 @@
 #!/usr/bin/python
 import os
-from helpers import ensureFolder, ensureVersionFolder
+from helpers import ensureFolder, ensureVersionFolder, bash
 from constants import appRepos, assetRepos, buildRepos, tick
 
-from subprocess import call
-
-def bash(*args):
-    cmd = " ".join(args)
-    call(cmd, shell=True)
 
 def build(args):
     cmd = " ".join(args)

@@ -1,15 +1,10 @@
 #!/usr/bin/python
 import os
-from subprocess import Popen, PIPE, STDOUT
+from subprocess import call
 
 def bash(*args):
-	cmd = " ".join(args)
-	print cmd
-	# p = Popen(cmd, shell=True, stdin=PIPE, stdout=PIPE, stderr=STDOUT, close_fds=True)
-	p = Popen(cmd, shell=True, stdin=PIPE, stdout=STDOUT, stderr=STDOUT, close_fds=True)
-	output = p.stdout.read()
-	print output
-	return output
+    cmd = " ".join(args)
+    call(cmd, shell=True)
 
 def ensureFolder(*folders):
 	f = os.path.join(*folders)

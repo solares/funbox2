@@ -1,16 +1,18 @@
 #!/usr/bin/python
 import sys
-import scripts.lib.repoTools
-import scripts.lib.assetTools
-import scripts.lib.skinTools
-import scripts.lib.buildTools
-from scripts.lib.constants import icon, error
+import scripts.lib.repoTools as repoTools
+import scripts.lib.assetTools as assetTools
+import scripts.lib.skinTools as skinTools
+import scripts.lib.buildTools as buildTools
+import scripts.lib.iniTools as iniTools
+from scripts.lib.constants import icon, tick, error
 
 # SET UP 
 # export PATH=$PATH:$PWD
 # type this to get current working directory into the path
 # so you can call this script using fun instead of ./fun
 
+# iniTools.read("funbox.ini")
 
 def usage():
     print "For more help, try 'fun help'"
@@ -64,7 +66,7 @@ if __name__ == '__main__':
     command = sys.argv[1]
 
     if command == "pull":
-        scripts.lib.repoTools.updateAll()
+        repoTools.updateAll()
 
     elif command == "help":
         help()
@@ -80,7 +82,7 @@ if __name__ == '__main__':
                 print error + " Missing version for assets link."
                 usage()
             version = sys.argv[3]
-            scripts.lib.assetTools.link(version)
+            assetTools.link(version)
         else:
             print error + " Missing action for assets."
             usage()
@@ -96,7 +98,7 @@ if __name__ == '__main__':
                 print error + " Missing platform for audio crush."
                 usage()
             platform = sys.argv[3]
-            scripts.lib.assetTools.crushAudio(platform)
+            assetTools.crushAudio(platform)
         else:
             print error + " Unknown action for audio."
             usage()
@@ -112,7 +114,7 @@ if __name__ == '__main__':
                 print error + " Missing version for art crush."
                 usage()
             version = sys.argv[3]
-            scripts.lib.assetTools.crushArt(version)
+            assetTools.crushArt(version)
         else:
             print error + " Unknown action for art."
             usage()
@@ -128,13 +130,14 @@ if __name__ == '__main__':
                 usage()
             product = sys.argv[3]
             version = sys.argv[4]
-            scripts.lib.skinTools.crush(product, version)
+            skinTools.crush(product, version)
+            print tick + "  Done! Now use 'fun skin link %s' to link to these assets."%version
         elif action == "link":
             if argcount <=3 :
                 print error + " Missing version for skin link."
                 usage()
             version = sys.argv[3]
-            scripts.lib.skinTools.link(version)
+            skinTools.link(version)
         else:
             print error + " Unknown action for skin."
             usage()
@@ -145,7 +148,7 @@ if __name__ == '__main__':
             print error + " Missing product for build."
             usage()
         # product = sys.argv[2]
-        scripts.lib.buildTools.build(sys.argv[2:])
+        buildTools.build(sys.argv[2:])
 
     elif command == "publish":
         if argcount <= 2:
@@ -153,8 +156,8 @@ if __name__ == '__main__':
             usage()
         product = sys.argv[2]
         sys.argv.append("--publish")
-        scripts.lib.buildTools.build(sys.argv[2:])
-        scripts.lib.buildTools.uploadConfig(product)
+        buildTools.build(sys.argv[2:])
+        buildTools.uploadConfig(product)
 
     else:
         print error + " Unknown command."

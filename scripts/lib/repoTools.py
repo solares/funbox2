@@ -1,14 +1,9 @@
 #!/usr/bin/python
 # import string
 import os
-from helpers import ensureFolder, ensureVersionFolder
+from helpers import ensureFolder, ensureVersionFolder, bash
 from constants import appRepos, assetRepos, buildRepos, tick
 
-from subprocess import call
-
-def bash(*args):
-    cmd = " ".join(args)
-    call(cmd, shell=True)
 
 # def getRepoName(platform, product):
 # 	return "build-%s-%s"%(platform, string.lower(product))
