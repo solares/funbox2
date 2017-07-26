@@ -42,6 +42,7 @@ from constants import appRepos, assetRepos, buildRepos, tick
 def updateRepo(repo, protocol="ssh"):
     path = os.path.join(repo["base"], repo["path"])
     path = os.path.normpath(path)
+
     f, ver = ensureVersionFolder(path)
 
     branch = repo["branch"]

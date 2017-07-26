@@ -8,7 +8,6 @@ now = str(datetime.datetime.now())[:16]
 now = now.replace(" ", "-")
 now = now.replace(":", "")
 
-
 # TODO move these to INI
 path_to_app = "apps/funenglish"
 path_to_assets = "assets"
@@ -16,14 +15,9 @@ path_to_assets = "assets"
 app_path = os.path.realpath(path_to_app)
 assets_path = os.path.realpath(path_to_assets)
 
-# create __displaced if not done so yet
-displaced = os.path.join(app_path, displacementFolder)
-if not os.path.exists(displaced):
-    bash("mkdir", displaced)
 
-audio = os.path.join(app_path, "audio")
-if not os.path.exists(audio):
-    bash("mkdir", audio)
+
+
 
 
 def crushArt(version):
@@ -35,6 +29,11 @@ def crushArt(version):
 
 def crushAudio(platform):
     print "Crushing audio for %s"%platform
+
+    # ensure audio folder is present
+    audio = os.path.join(app_path, "audio")
+    if not os.path.exists(audio):
+        bash("mkdir", audio)
 
     script_path = os.path.join(assets_path, "audio-funenglish")
     os.chdir(script_path)
@@ -60,6 +59,13 @@ def displace(name, target, location):
 
     # if a folder, move it out the way
     if os.path.exists(location):
+
+        # create __displaced if not done so yet
+        displaced = os.path.join(app_path, displacementFolder)
+        if not os.path.exists(displaced):
+            bash("mkdir", displaced)
+
+        # move folder into displaced folder with datetime 
         displaced = os.path.join(app_path, displacementFolder, "%s-%s"%(name, now))
         print warn + "  Moving %s folder to %s"%(location, displaced)
         bash("mv", location, displaced)
