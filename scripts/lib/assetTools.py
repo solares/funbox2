@@ -27,8 +27,8 @@ def crushArt(version):
     os.chdir(art_script_path)
     bash("./build.sh", version)
 
-def crushAudio(platform):
-    print "Crushing audio for %s"%platform
+def crushAudio(platform, language):
+    print "Crushing %s audio for %s"%(language, platform)
 
     # ensure audio folder is present
     audio = os.path.join(app_path, "audio")
@@ -36,6 +36,11 @@ def crushAudio(platform):
         bash("mkdir", audio)
 
     script_path = os.path.join(assets_path, "audio-funenglish")
+    os.chdir(script_path)
+    command = "./create_%s_audio.sh"%platform
+    bash(command)
+
+    script_path = os.path.join(assets_path, "audio-fungerman")
     os.chdir(script_path)
     command = "./create_%s_audio.sh"%platform
     bash(command)
@@ -77,11 +82,10 @@ def displace(name, target, location):
 def link(version):
     print "Linking %s version assets"%version
 
- 
     # art
-    versionFolder = "master"
+    versionFolder = "24bit"
     if version != "master":
-        versionFolder = os.path.join("builds", version)
+        versionFolder = os.path.join("8bit", version)
     artLink = os.path.join(assets_path, "art-funenglish", versionFolder)
     artLocation = os.path.join(app_path, "art")
     displace("art", artLink, artLocation)
@@ -90,6 +94,14 @@ def link(version):
     audioLink = os.path.join(assets_path, "audio-funenglish")
     audioLocation = os.path.join(app_path, "audio", "english")
     displace("english", audioLink, audioLocation)
+
+    # audio
+    audioLink = os.path.join(assets_path, "audio-fungerman")
+    audioLocation = os.path.join(app_path, "audio", "german")
+    displace("german", audioLink, audioLocation)
+
+    # TODO 
+    # add spanish, french, chinese
 
     audioLink = os.path.join(assets_path, "audio-funsfx")
     audioLocation = os.path.join(app_path, "audio", "sfx")

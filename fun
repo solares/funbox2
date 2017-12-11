@@ -27,6 +27,9 @@ def help():
 # getting started, getting up to date
 fun pull                     ensures all repos are up to date
 
+# update app to a tag
+fun up [tag]                 updates the repo to the named tag
+
 # crush assets
 fun audio crush apple        create m4a and caf audio from master WAVs 
 fun audio crush android      create mp3 audio from master WAVs
@@ -69,7 +72,15 @@ if __name__ == '__main__':
     command = sys.argv[1]
 
     if command == "pull":
+        # could consider fun pull clean     
         repoTools.updateAll()
+
+    elif command == "up":
+        if argcount < 3:
+            print error + " Missing tag for update."
+            usage()
+        tag = sys.argv[2]
+        repoTools.update(tag)
 
     elif command == "help":
         help()
@@ -160,6 +171,9 @@ if __name__ == '__main__':
         sys.argv.append("--publish")
         buildTools.build(sys.argv[2:])
         buildTools.uploadConfig(product)
+
+    elif command == "status":
+        buildTools.status()
 
     else:
         print error + " Unknown command."
