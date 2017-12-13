@@ -1,11 +1,18 @@
 #!/usr/bin/python
 import os
 from subprocess import call
+import datetime
 
 def bash(*args):
     cmd = " ".join(args)
     # print ("bash %s"%cmd)
     call(cmd, shell=True)
+
+def now():
+    d = str(datetime.datetime.now())[:16]
+    d = d.replace(" ", "-")
+    d = d.replace(":", "")
+    return d
 
 def ensureFolder(*folders):
     f = os.path.join(*folders)

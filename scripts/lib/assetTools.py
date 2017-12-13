@@ -1,12 +1,7 @@
 #!/usr/bin/python
 import os
-from helpers import ensureFolder, ensureVersionFolder, bash
+from helpers import ensureFolder, ensureVersionFolder, bash, now
 from constants import appRepos, assetRepos, buildRepos, tick, warn, error, displacementFolder
-
-import datetime
-now = str(datetime.datetime.now())[:16]
-now = now.replace(" ", "-")
-now = now.replace(":", "")
 
 # TODO move these to INI
 path_to_app = "apps/funenglish"
@@ -14,11 +9,6 @@ path_to_assets = "assets"
 
 app_path = os.path.realpath(path_to_app)
 assets_path = os.path.realpath(path_to_assets)
-
-
-
-
-
 
 def crushArt(version):
     print "Crushing art to %s"%version
@@ -71,7 +61,7 @@ def displace(name, target, location):
             bash("mkdir", displaced)
 
         # move folder into displaced folder with datetime 
-        displaced = os.path.join(app_path, displacementFolder, "%s-%s"%(name, now))
+        displaced = os.path.join(app_path, displacementFolder, "%s-%s"%(name, now()))
         print warn + "  Moving %s folder to %s"%(location, displaced)
         bash("mv", location, displaced)
 
