@@ -1,7 +1,6 @@
 #!/usr/bin/python
 import os
 from helpers import bash
-# from constants import appRepos, assetRepos, buildRepos, tick
 
 # TODO move these to INI
 skins_path = "assets/funenglish-skins/scripts"
