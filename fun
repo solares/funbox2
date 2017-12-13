@@ -25,10 +25,10 @@ def help():
     print("""Usage:
 
 # getting started, getting up to date
-fun pull                     ensures all repos are up to date
+fun fetch                     ensures all repos are up to date
 
 # update app to a tag
-fun up [tag]                 updates the repo to the named tag
+fun checkout [tag|branch]    updates the repo to the named tag or branch
 
 # crush assets
 fun audio crush apple        create m4a and caf audio from master WAVs 
@@ -71,16 +71,30 @@ if __name__ == '__main__':
 
     command = sys.argv[1]
 
-    if command == "pull":
-        # could consider fun pull clean     
-        repoTools.updateAll()
+    if command == "fetch":
+        repoTools.fetchAll()
 
-    elif command == "up":
+    elif command == "checkout":
+
         if argcount < 3:
-            print error + " Missing tag for update."
+            print error + " Missing revision name for checkout."
             usage()
-        tag = sys.argv[2]
-        repoTools.update(tag)
+
+        revision = sys.argv[2]
+        repoTools.checkout(revision)
+
+        # action = sys.argv[2]
+        # if action == "tag":
+        #     if argcount < 4:
+        #         print error + " Missing tag name for app update."
+        #         usage()
+        #     tag = sys.argv[3]
+        #     repoTools.updateTo("tag", tag)
+        # if action == "branch":
+        #     if argcount < 4:
+        #         print error + " Missing branch name for app update."
+        #         usage()
+
 
     elif command == "help":
         help()

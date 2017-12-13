@@ -17,8 +17,9 @@ def crushArt(version):
     os.chdir(art_script_path)
     bash("./build.sh", version)
 
-def crushAudio(platform, language):
-    print "Crushing %s audio for %s"%(language, platform)
+def crushAudio(platform): # todo add language
+    # print "Crushing %s audio for %s"%(language, platform)
+    print "Crushing audio for %s"%platform
 
     # ensure audio folder is present
     audio = os.path.join(app_path, "audio")
@@ -67,6 +68,7 @@ def displace(name, target, location):
 
     # create the link
     bash("ln -sf", target, location) 
+    bash("ls -al", location)
 
 
 def link(version):

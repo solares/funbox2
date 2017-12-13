@@ -3,49 +3,65 @@ import os
 from helpers import ensureFolder, ensureVersionFolder, bash
 from constants import appRepos, assetRepos, buildRepos, tick
 
-def updateRepo(repo, protocol="ssh"):
+def fetchRepo(repo, protocol="ssh"):
     path = os.path.join(repo["base"], repo["path"])
     path = os.path.normpath(path)
 
     f, ver = ensureVersionFolder(path)
 
-    branch = repo["branch"]
-
     if ver:
-    	print "%s  Found %s repo at %s"%(tick, ver, path)
+        print "%s Found %s repo at %s"%(tick, ver, path)
         if ver == "hg":
-        	bash("hg -R", path, "pull")
-        	bash("hg -R", path, "update", branch)
+            bash("hg -R", path, "pull")
         else:
-            bash("git -C", path, "pull")
-            bash("git -C", path, "checkout", branch)
+            bash("git -C", path, "fetch")
 
     else:
-    	name = repo["name"]
-    	ver = repo["ver"]
-    	# enter the folder and clone the repo
+        name = repo["name"]
+        ver = repo["ver"]
+        # enter the folder and clone the repo
         url = "ssh://hg@bitbucket.org/solares/%s"%name
         if protocol == "https":
             url = "https://bitbucket.org/solares/%s"%name
-        print "%s  %s"%(tick, url)
-    	bash(ver, "clone", url, path)
-        if ver=="hg":
-            bash("hg -R", path, "update", branch)
-        else:
-            bash("git -C", path, "checkout", branch)
+        print "%s Cloning %s"%(tick, url)
+        bash(ver, "clone", url, path)
+
+
+def checkoutRepo(repo, protocol="ssh"):
+
+    path = os.path.join(repo["base"], repo["path"])
+    path = os.path.normpath(path)
+
+    ver = repo["ver"]
+
+    revision = repo["revision"]
+
+    print "%s Checking out  %s"%(tick, revision)
+    if ver == "hg":
+    	bash("hg -R", path, "update", revision)
+    else:
+        bash("git -C", path, "checkout", revision)
+
+
+# just for the main repo
+def checkout(revision):
+    protocol = "ssh"
+    funRepo = appRepos[0] # todo fix later properly
+    funRepo["revision"] = revision
+    checkoutRepo(funRepo, protocol)
 
 
 
 
 
-# ensure all repos are in place and updated 
-def updateAll():
+# ensure all repos are in place
+def fetchAll():
     protocol = "ssh"
     for repo in appRepos:
-        updateRepo(repo, protocol)
+        fetchRepo(repo, protocol)
 
     for repo in assetRepos:
-        updateRepo(repo, protocol)
+        fetchRepo(repo, protocol)
 
 
 

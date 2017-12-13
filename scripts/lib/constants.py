@@ -1,6 +1,6 @@
 # app repos
 appRepos = [
-    {"base":"apps", "path":"funenglish", "name":"funenglish2", "ver":"git", "branch":"_develop"}, 
+    {"base":"apps", "path":"funenglish", "name":"funenglish2", "ver":"git", "branch":"_master"}, 
 ]
 
 # asset repos
@@ -9,9 +9,9 @@ assetRepos = [
     {"base":"assets", "path":"audio-funenglish", "name":"audio-funenglish", "ver":"hg", "branch":"default"}, 
     {"base":"assets", "path":"audio-funsfx", "name":"audio-funsfx", "ver":"hg", "branch":"default"}, 
     {"base":"assets", "path":"audio-funmusic", "name":"audio-funmusic", "ver":"hg", "branch":"default"}, 
-    {"base":"assets", "path":"funenglish-skins", "name":"funenglish-skins", "ver":"git", "branch":"master"}, 
+    # {"base":"assets", "path":"funenglish-skins", "name":"funenglish-skins", "ver":"git", "branch":"master"}, 
 
-    {"base":"assets", "path":"audio-fungerman", "name":"audio-fungerman", "ver":"hg", "branch":"default"}, 
+    # {"base":"assets", "path":"audio-fungerman", "name":"audio-fungerman", "ver":"hg", "branch":"default"}, 
     # "audio-funspanish", 
     # "audio-funchinese", 
     # "audio-funfrench", 
