@@ -49,6 +49,11 @@ def crushAudio(platform): # todo add language
 # if a folder is in the way, it gets moved to a time-stamped folder in __displaced__ on the app root
 def displace(name, target, location):
 
+    # first, ensure that the target exists
+    if not os.path.exists(target):
+        print error + "  Target %s doesn't exist!"%target
+        return
+
     # if it's a link, kill it
     if os.path.islink(location):
         bash("rm", location)
