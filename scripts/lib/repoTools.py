@@ -1,7 +1,7 @@
 #!/usr/bin/python
 import os
 from helpers import ensureFolder, ensureVersionFolder, bash
-from constants import appRepos, assetRepos, buildRepos, tick
+from constants import appRepos, assetRepos, buildRepos, tick, coronaPath
 
 def fetchRepo(repo, protocol="ssh"):
     path = os.path.join(repo["base"], repo["path"])
@@ -63,6 +63,9 @@ def fetchAll():
     for repo in assetRepos:
         fetchRepo(repo, protocol)
 
+
+def runApp():
+    bash(coronaPath, "apps/funenglish")
 
 
 

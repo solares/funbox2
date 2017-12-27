@@ -1,3 +1,5 @@
+coronaPath = "/Applications/Corona/Corona\ Simulator.app/Contents/MacOS/Corona\ Simulator"
+
 # app repos
 appRepos = [
     {"base":"apps", "path":"funenglish", "name":"funenglish2", "ver":"git", "branch":"_master"}, 

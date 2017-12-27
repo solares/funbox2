@@ -45,6 +45,9 @@ fun skin crush [PRODUCT] [VERSION]  create 8bit art and m4a/mp3 audio
 fun skin link master                links master skin (24bit art and WAV audio)
 fun skin link [VERSION]             links versioned skin (8bit art and m4a/mp3 audio)
 
+# run the app
+fun run
+
 # build 
 fun build fun_english -p apple -t release -d
                                 builds the app at the current version number 
@@ -99,6 +102,9 @@ if __name__ == '__main__':
     elif command == "help":
         help()
 
+    elif command == "run":
+        repoTools.runApp()
+
 
     elif command == "assets":
         if argcount < 3:
@@ -107,7 +113,8 @@ if __name__ == '__main__':
         action = sys.argv[2]
         if action == "link":
             if argcount < 4:
-                print error + " Missing version for assets link."
+                print error + " Missing version for assets link. Try:"
+                assetTools.listArtPaths()
                 usage()
             version = sys.argv[3]
             assetTools.link(version)

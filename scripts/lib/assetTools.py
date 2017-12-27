@@ -52,7 +52,10 @@ def displace(name, target, location):
     # first, ensure that the target exists
     if not os.path.exists(target):
         print error + "  Target %s doesn't exist!"%target
+        print "Try one of these:"
+        listArtPaths()
         return
+
 
     # if it's a link, kill it
     if os.path.islink(location):
@@ -75,6 +78,9 @@ def displace(name, target, location):
     bash("ln -sf", target, location) 
     bash("ls -al", location)
 
+def listArtPaths():
+    bash("ls", os.path.join(assets_path, "art-funenglish", "8bit"))
+    return 
 
 def link(version):
     print "Linking %s version assets"%version
