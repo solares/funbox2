@@ -6,9 +6,11 @@ from constants import appRepos, assetRepos, buildRepos, tick, warn, error, displ
 # TODO move these to INI
 path_to_app = "apps/funenglish"
 path_to_assets = "assets"
+path_to_club = "club"
 
 app_path = os.path.realpath(path_to_app)
 assets_path = os.path.realpath(path_to_assets)
+club_path = os.path.realpath(path_to_club)
 
 def crushArt(version):
     print "Crushing art to %s"%version
@@ -80,6 +82,13 @@ def displace(name, target, location):
 
 def listArtPaths():
     bash("ls", os.path.join(assets_path, "art-funenglish", "8bit"))
+    return
+
+def linkClub(folderName):
+    print "Linking %s club assets"%folderName
+    clubLink = os.path.join(club_path, folderName)
+    clubLocation = os.path.join(app_path, "art")
+    displace("art", clubLink, clubLocation)
     return 
 
 def link(version):

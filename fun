@@ -37,8 +37,9 @@ fun art crush [VERSION]      create 8bit art and save to VERSION folder
                              e.g. fun art crush 15.0.1
 
 # link assets
-fun assets link master       links master assets (24bit art and WAV audio)
-fun assets link [VERSION]    links versioned assets (8bit art and m4a/mp3 audio)
+fun assets link master            links master assets (24bit art and WAV audio)
+fun assets link [VERSION]         links versioned assets (8bit art and m4a/mp3 audio)
+fun assets link club [CLUB_NAME]  links to club assets (~/club/[CLUB_NAME])
 
 # skins (DK, DTP)
 fun skin crush [PRODUCT] [VERSION]  create 8bit art and m4a/mp3 audio 
@@ -117,7 +118,14 @@ if __name__ == '__main__':
                 assetTools.listArtPaths()
                 usage()
             version = sys.argv[3]
-            assetTools.link(version)
+            if version == "club":
+                if argcount < 5:
+                    print error + " no club folder name specified."
+                    usage()
+                clubName = sys.argv[4]
+                assetTools.linkClub(clubName)
+            else:
+                assetTools.link(version)
         else:
             print error + " Missing action for assets."
             usage()
