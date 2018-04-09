@@ -1,10 +1,13 @@
 #!/usr/bin/python
 import os
-from helpers import bash
+from helpers import bash, ensureFolder
 
 # TODO move these to INI
 skins_path = "assets/funenglish-skins/scripts"
 app_path = "apps/funenglish"
+
+# ensure there's a skins folder in app_path
+ensureFolder(app_path, "skins")
 
 def crush(product, version):
     print "Crushing %s skin version %s"%(product, version)
