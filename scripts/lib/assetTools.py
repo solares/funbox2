@@ -33,10 +33,10 @@ def crushAudio(platform): # todo add language
     command = "./create_%s_audio.sh"%platform
     bash(command)
 
-    script_path = os.path.join(assets_path, "audio-fungerman")
-    os.chdir(script_path)
-    command = "./create_%s_audio.sh"%platform
-    bash(command)
+    # script_path = os.path.join(assets_path, "audio-fungerman")
+    # os.chdir(script_path)
+    # command = "./create_%s_audio.sh"%platform
+    # bash(command)
 
     script_path = os.path.join(assets_path, "audio-funsfx")
     os.chdir(script_path)
