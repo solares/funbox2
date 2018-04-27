@@ -3,6 +3,7 @@ syntax: glob
 apps/**
 assets/**
 builds/**
+club/**
 
 .DS_Store
 *.orig
