@@ -45,6 +45,7 @@ fun assets link club [CLUB_NAME]  links to club assets (~/club/[CLUB_NAME])
 fun skin crush [PRODUCT] [VERSION]  create 8bit art and m4a/mp3 audio 
 fun skin link master                links master skin (24bit art and WAV audio)
 fun skin link [VERSION]             links versioned skin (8bit art and m4a/mp3 audio)
+fun skin link club [CLUB_NAME]      links to club skin folder(~/club/[CLUB_NAME])
 
 # run the app
 fun run
@@ -176,11 +177,21 @@ if __name__ == '__main__':
             skinTools.crush(product, version)
             print tick + "  Done! Now use 'fun skin link %s' to link to these assets."%version
         elif action == "link":
+
             if argcount <=3 :
                 print error + " Missing version for skin link."
                 usage()
+            
             version = sys.argv[3]
-            skinTools.link(version)
+
+            if version == "club":
+                if argcount < 4:
+                    print error + " no club folder name specified for skin link."
+                    usage()
+                clubName = sys.argv[4]
+                skinTools.linkClub(clubName)
+            else:
+                skinTools.link(version)
         else:
             print error + " Unknown action for skin."
             usage()
