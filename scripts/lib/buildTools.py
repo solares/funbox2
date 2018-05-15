@@ -9,7 +9,7 @@ path_to_app = "apps/funenglish"
 def build(args):
     script_path = os.path.join(path_to_app, "scripts", "build")
     os.chdir(script_path)
-    args.insert(0, "./build.py")
+    args.insert(0, "python build.py")
     bash(*args)
 
 def publish(args):

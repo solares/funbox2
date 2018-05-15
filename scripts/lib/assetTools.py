@@ -109,9 +109,9 @@ def link(version):
     displace("english", audioLink, audioLocation)
 
     # audio
-    audioLink = os.path.join(assets_path, "audio-fungerman")
-    audioLocation = os.path.join(app_path, "audio", "german")
-    displace("german", audioLink, audioLocation)
+    # audioLink = os.path.join(assets_path, "audio-fungerman")
+    # audioLocation = os.path.join(app_path, "audio", "german")
+    # displace("german", audioLink, audioLocation)
 
     # TODO 
     # add spanish, french, chinese
