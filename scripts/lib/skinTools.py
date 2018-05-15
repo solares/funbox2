@@ -60,6 +60,6 @@ def link(version):
 def linkClub(folderName):
 	print "Linking %s skin assets"%folderName
 	club_path = os.path.realpath(path_to_club)
-	clubLink = os.path.join(club_path, folderName)
-	clubLocation = os.path.join(app_path, "skins")
+	clubLink = os.path.join(club_path, folderName + "/discovery")
+	clubLocation = os.path.join(app_path, "skins/discovery")
 	displace("skins", clubLink, clubLocation)
