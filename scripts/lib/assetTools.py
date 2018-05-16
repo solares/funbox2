@@ -23,12 +23,6 @@ def crushAudio(platform): # todo add language
     # print "Crushing %s audio for %s"%(language, platform)
     print "Crushing audio for %s"%platform
 
-    # ensure audio folder is present
-    audio = os.path.join(app_path, "audio")
-    if not os.path.exists(audio):
-        bash("mkdir", audio)
-
-
     script_path = os.path.join(assets_path, "audio-funenglish")
     os.chdir(script_path)
     command = "./create_%s_audio.sh"%platform
@@ -104,6 +98,13 @@ def link(version):
     displace("art", artLink, artLocation)
 
     # audio
+
+    # ensure destination root audio folder is present
+    audio = os.path.join(app_path, "audio")
+    if not os.path.exists(audio):
+        os.chdir(app_path)
+        bash("mkdir", audio)
+
     audioLink = os.path.join(assets_path, "audio-funenglish")
     audioLocation = os.path.join(app_path, "audio", "english")
     displace("english", audioLink, audioLocation)
