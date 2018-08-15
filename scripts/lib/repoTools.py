@@ -63,6 +63,9 @@ def fetchAll():
     for repo in assetRepos:
         fetchRepo(repo, protocol)
 
+    for repo in buildRepos:
+        fetchRepo(repo, protocol)
+
 
 def runApp():
     bash(coronaPath, "apps/funenglish")
