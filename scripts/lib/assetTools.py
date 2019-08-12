@@ -15,7 +15,7 @@ club_path = os.path.realpath(path_to_club)
 def crushArt(version):
     print "Crushing art to %s"%version
     # TODO move to INI
-    art_script_path = "assets/art-funenglish2/scripts"
+    art_script_path = "assets/art-funenglish/scripts"
     os.chdir(art_script_path)
     bash("./build.sh", version)
 
@@ -76,7 +76,7 @@ def displace(name, target, location):
     bash("ls -al", location)
 
 def listArtPaths():
-    bash("ls", os.path.join(assets_path, "art-funenglish2", "8bit"))
+    bash("ls", os.path.join(assets_path, "art-funenglish", "8bit"))
     return
 
 def linkClub(folderName):
@@ -93,7 +93,7 @@ def link(version):
     versionFolder = "24bit"
     if version != "master":
         versionFolder = os.path.join("8bit", version)
-    artLink = os.path.join(assets_path, "art-funenglish2", versionFolder)
+    artLink = os.path.join(assets_path, "art-funenglish", versionFolder)
     artLocation = os.path.join(app_path, "art")
     displace("art", artLink, artLocation)
 
