@@ -7,7 +7,7 @@ appRepos = [
 
 # asset repos
 assetRepos = [
-    {"base":"assets", "path":"art-funenglish", "name":"art-funenglish", "ver":"hg", "branch":"default"}, 
+    {"base":"assets", "path":"art-funenglish", "name":"art-fejr", "ver":"git", "branch":"master"}, 
     {"base":"assets", "path":"audio-funenglish", "name":"audio-funenglish", "ver":"hg", "branch":"default"}, 
     {"base":"assets", "path":"audio-funsfx", "name":"audio-funsfx", "ver":"hg", "branch":"default"}, 
     {"base":"assets", "path":"audio-funmusic", "name":"audio-funmusic", "ver":"hg", "branch":"default"}, 
